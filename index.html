@@ -1,0 +1,150 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   IoT Dashboard
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+   <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100 text-gray-800">
+  <div class="min-h-screen flex flex-col">
+   <!-- Header -->
+   <header class="sticky top-0 bg-white shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-6">
+     <img alt="tailwind logo" class="h-10 w-10 mr-2" height="50" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" width="50"/>
+     <div class="text-2xl font-bold text-gray-800">
+      IoT Dashboard
+     </div>
+    </div>
+   </header>
+   <!-- Main Content -->
+   <main class="flex-grow container mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+     <!-- Card 1 -->
+     <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex items-center justify-between">
+       <div>
+        <h2 class="text-lg font-semibold text-gray-800">
+         Temperature
+        </h2>
+        <p class="text-gray-600">
+         Living Room
+        </p>
+       </div>
+       <i class="fas fa-thermometer-half text-3xl" id="temperature-icon">
+       </i>
+      </div>
+      <div class="mt-4 text-3xl font-bold text-gray-800" id="temp">
+       0°C
+      </div>
+     </div>
+     <!-- Card 2 -->
+     <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex items-center justify-between">
+       <div>
+        <h2 class="text-lg font-semibold text-gray-800">
+         Humidity
+        </h2>
+        <p class="text-gray-600">
+         Living Room
+        </p>
+       </div>
+       <i class="fas fa-tint text-3xl" id="humidity-icon">
+       </i>
+      </div>
+      <div class="mt-4 text-3xl font-bold text-gray-800" id="hum">
+       0%
+      </div>
+     </div>
+     <!-- Light 1 -->
+     <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex items-center justify-between">
+       <div>
+        <h2 class="text-lg font-semibold text-gray-800">
+         Light
+        </h2>
+        <p class="text-gray-600">
+         Living Room
+        </p>
+       </div>
+       <i class="fas fa-lightbulb text-3xl text-gray-600" id="light-icon-1">
+       </i>
+      </div>
+      <div style="display: none" class="mt-4 text-3xl font-bold text-gray-800" id="light-status-1">
+       OFF
+      </div>
+      <div class="mt-4">
+       <div class="toggle-switch" id="toggle-switch-1" onclick="toggleLight(1)">
+       </div>
+      </div>
+     </div>
+     
+     <!-- Light 2 -->
+     <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex items-center justify-between">
+       <div>
+        <h2 class="text-lg font-semibold text-gray-800">
+         Light
+        </h2>
+        <p class="text-gray-600">
+         Living Room
+        </p>
+       </div>
+       <i class="fas fa-lightbulb text-3xl text-gray-600" id="light-icon-2">
+       </i>
+      </div>
+      <div style="display: none" class="mt-4 text-3xl font-bold text-gray-800" id="light-status-2">
+       OFF
+      </div>
+      <div class="mt-4">
+       <div class="toggle-switch" id="toggle-switch-2" onclick="toggleLight(2)">
+       </div>
+      </div>
+     </div>
+     
+     <!-- Light 3 -->
+     <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="flex items-center justify-between">
+       <div>
+        <h2 class="text-lg font-semibold text-gray-800">
+         Light
+        </h2>
+        <p class="text-gray-600">
+         Living Room
+        </p>
+       </div>
+       <i class="fas fa-lightbulb text-3xl text-gray-600" id="light-icon-3">
+       </i>
+      </div>
+      <div style="display: none" class="mt-4 text-3xl font-bold text-gray-800" id="light-status-3">
+       OFF
+      </div>
+      <div class="mt-4">
+       <div class="toggle-switch" id="toggle-switch-3" onclick="toggleLight(3)">
+       </div>
+      </div>
+     </div>
+
+    </div>
+    
+    <!-- Floating Alerts -->
+    <div id="alert-box" class="fixed bottom-4 right-4 p-3 bg-blue-500 text-white rounded-lg shadow-lg flex items-center space-x-2 text-sm">
+        <i class="fas fa-spinner fa-spin"></i>
+        <span>Connecting...</span>
+    </div>
+   </main>
+   <!-- Footer -->
+   <footer class="bg-white shadow-md py-4">
+    <div class="container mx-auto text-center text-gray-600">
+     © 2025 Fici Labs. All rights reserved.
+    </div>
+   </footer>
+  </div>
+  <script src="script.js"></script>
+ </body>
+</html>

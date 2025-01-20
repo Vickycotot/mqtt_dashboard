@@ -1,0 +1,29 @@
+body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .toggle-switch {
+            width: 50px;
+            height: 25px;
+            background-color: #ccc;
+            border-radius: 25px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-switch::before {
+            content: '';
+            width: 23px;
+            height: 23px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.3s;
+        }
+        .toggle-switch.on {
+            background-color: #fbbf24; /* Tailwind's yellow-500 */
+        }
+        .toggle-switch.on::before {
+            transform: translateX(25px);
+        }
