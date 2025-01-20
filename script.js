@@ -16,6 +16,9 @@
             console.log('Connecting to HiveMQ...');
             
             client = mqtt.connect(broker, {
+                host: 'broker.hivemq.com',
+                port: 8884,
+                protocol: 'wss',
                 clientId: clientId,
                 clean: true,
                 reconnectPeriod: 1000,
