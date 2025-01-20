@@ -1,6 +1,6 @@
 // MQTT Configuration
        const clientId = 'ledcontrol_' + Math.random().toString(16).substr(2, 8);
-       const broker = 'wss://broker.hivemq.com:8000/mqtt';
+       const broker = 'wss://broker.hivemq.com:8884/mqtt';
         
        // Create unique topic prefix to avoid conflicts
        const topicPrefix = `ficilabs/`;
