@@ -43,7 +43,7 @@
                 }else if(topic == 'ficilabs/hum'){
                     console.log(message.toString())
                     console.log(topic)
-                    updateIconHumTemp(message.toString())
+                    updateIconHum(message.toString())
                 }
             });
 
