@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Connection Example</title>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body>
+    <h1>MQTT Connection Example</h1>
+    <script>
+        // Connection options
+        const options = {
+            host: 'broker.hivemq.com',
+            port: 8884,
+            protocol: 'wss'
+        };
+
+        // Connect to the broker
+        const client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt', options);
+
+        // Handle connection event
+        client.on('connect', function() {
+            console.log('Connected to HiveMQ MQTT broker');
+            
+            // Subscribe to a topic
+            const topic = 'my/test/topic';
+            client.subscribe(topic, function(err) {
+                if (!err) {
+                    console.log(`Subscribed to topic: ${topic}`);
+                }
+            });
+
+            // Publish a message to the topic
+            const message = 'Hello MQTT';
+            client.publish(topic, message, function(err) {
+                if (!err) {
+                    console.log(`Message published: ${message}`);
+                }
+            });
+        });
+
+        // Handle message event
+        client.on('message', function(topic, message) {
+            // message is a Buffer
+            console.log(`Received message on topic ${topic}: ${message.toString()}`);
+        });
+
+        // Handle error event
+        client.on('error', function(err) {
+            console.error(`Connection error: ${err}`);
+        });
+
+        // Handle close event
+        client.on('close', function() {
+            console.log('Connection closed');
+        });
+    </script>
+</body>
+</html>
